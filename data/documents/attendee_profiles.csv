@@ -1,0 +1,26 @@
+attendee_id,name,job_title,company_id,company,seniority,ticket_count,engagement_events,unique_sessions_attended,topics,recommended_action
+A00202,Julia Becker,CMO,C029,Green Group,C-level,1,4,4,"['Marketplaces', 'Payments', 'Sustainability']",Direct outreach
+A00405,Sarah Bauer,VP Sales,C071,Omni Brands,Head/Director,1,4,4,"['Marketplaces', 'Retail Media']",Direct outreach
+A00067,Max Zimmermann,VP Sales,C031,Nordic Capital,Head/Director,1,2,2,['Payments'],Direct outreach
+A00048,Paul Bauer,Head of E-Commerce,C011,Omni Partners,Head/Director,1,2,2,"['Retail Media', 'Marketplaces']",Direct outreach
+A00061,Ben Hoffmann,Head of E-Commerce,C013,Hyper Media,Head/Director,1,1,1,['Marketplaces'],Direct outreach
+A00101,Nina Weber,Product Lead,C019,Pulse Markets,Manager,1,5,5,"['Marketplaces', 'Payments', 'AI in Commerce']",Nurture
+A00102,Felix Koch,Partnerships Manager,C029,Green Group,Manager,1,3,3,['Marketplaces'],Nurture
+A00135,Mia Schmidt,Partnerships Manager,C019,Pulse Markets,Manager,1,2,2,"['Retail Media', 'Sustainability']",Nurture
+A00060,Tim Koch,CMO,C013,Hyper Media,C-level,2,0,0,[],Qualify (paid but inactive)
+A00329,Sarah Zimmermann,CMO,C023,Summit Group,C-level,1,0,0,[],Qualify (paid but inactive)
+A00245,Lisa Müller,CEO,C034,Nova Group,C-level,1,0,0,[],Qualify (paid but inactive)
+A00291,Max Hoffmann,CMO,C013,Hyper Media,C-level,1,0,0,[],Qualify (paid but inactive)
+A00369,Nina Wagner,Founder,C034,Nova Group,C-level,1,0,0,[],Qualify (paid but inactive)
+A00262,Max Zimmermann,Founder,C031,Nordic Capital,C-level,1,0,0,[],Qualify (paid but inactive)
+A00403,Laura Müller,CEO,C029,Green Group,C-level,1,0,0,[],Qualify (paid but inactive)
+A00125,Tim Neumann,CMO,C032,Nordic Brands,C-level,1,0,0,[],Qualify (paid but inactive)
+A00231,Max Hoffmann,CTO,C071,Omni Brands,C-level,1,0,0,[],Qualify (paid but inactive)
+A00385,Lisa Weber,Head of E-Commerce,C071,Omni Brands,Head/Director,1,0,0,[],Qualify (paid but inactive)
+A00207,Lisa Hoffmann,Retail Director,C034,Nova Group,Head/Director,1,0,0,[],Qualify (paid but inactive)
+A00264,Marie Becker,Head of E-Commerce,C011,Omni Partners,Head/Director,1,0,0,[],Qualify (paid but inactive)
+A00121,Paul Schwarz,VP Sales,C023,Summit Group,Head/Director,1,0,0,[],Qualify (paid but inactive)
+A00083,Anna Bauer,VP Sales,C005,Omni Logistics,Head/Director,1,0,0,[],Qualify (paid but inactive)
+A00338,Anna Weber,Data Analyst,C050,Nova Labs,Individual,2,0,0,[],Qualify (paid but inactive)
+A00147,Tim Schmidt,Data Analyst,C011,Omni Partners,Individual,1,0,0,[],Qualify (paid but inactive)
+A00036,Lena Koch,Data Analyst,C005,Omni Logistics,Individual,1,0,0,[],Qualify (paid but inactive)

@@ -20,9 +20,9 @@ class ChatRequest(BaseModel):
     question: str
 
 
-@app.on_event("startup")
-def startup_event():
-    init_rag()
+#@app.on_event("startup")
+#def startup_event():
+   # init_rag()
 
 
 @app.get("/health")

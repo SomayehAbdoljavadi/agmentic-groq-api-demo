@@ -1,65 +1,19 @@
 import os
 import json
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 from dotenv import load_dotenv
+from groq import Groq
+
+from langchain_core.documents import Document
 
 load_dotenv()
-
-from groq import Groq
-from langchain_core.documents import Document
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 
 SYSTEM_PROMPT = """
-You are event Network Intelligence assitant. 
-
-Act as a fast, executive decision-support system — not a chatbot.
-
-Your job is to help leadership quickly identify:
-• who to invite
-• who to connect
-• where revenue opportunities exist
-• which relationships matter most
-
-SPEED IS CRITICAL.
-Always provide the answer immediately.
-
-RESPONSE STYLE:
-
-1. Start with a clear recommendation.
-2. Prioritize the top candidates only (max 5 unless asked).
-3. Explain briefly WHY they matter.
-4. Keep responses highly structured and easy to scan.
-5. Avoid long paragraphs.
-6. Avoid technical language.
-7. No unnecessary analysis.
-
-FORMAT:
-
-✅ Recommendation  
-(short, direct answer)
-
-✅ Top Matches  
-• Name — Role — Company  
-• Why relevant (one line)
-
-✅ Strategic Insight  
-(1–2 lines max)
-
-IMPORTANT:
-Do NOT dump raw data.
-Do NOT over-explain.
-Think like an executive advisor under time pressure.
-
-If data is incomplete, make a reasonable assumption and proceed confidently.
-"""
-
-"""SYSTEM_PROMPT = 
 You are event Network Intelligence assistant.
 
 Act as a fast, executive decision-support system — not a chatbot.
@@ -89,7 +43,6 @@ IMPORTANT RULES:
 """
 
 MODEL_NAME = "llama-3.1-8b-instant"
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 _vectordb = None
 _client = None
@@ -202,21 +155,31 @@ def load_documents(data_dir: Path) -> list[Document]:
 
 
 def build_vector_db(docs: list[Document]):
+    # import های سنگین فقط اینجا
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+    from langchain_community.vectorstores import FAISS
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,
         chunk_overlap=100
     )
 
     split_docs = splitter.split_documents(docs)
-    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
     vectordb = FAISS.from_documents(split_docs, embeddings)
     return vectordb
 
 
-def init_rag():
+def get_vectordb():
     global _vectordb
 
     if _vectordb is None:
+        print("Initializing vector DB...")
         docs = load_documents(DATA_DIR)
         print(f"Loaded {len(docs)} raw documents/rows from {DATA_DIR}")
         _vectordb = build_vector_db(docs)
@@ -226,7 +189,7 @@ def init_rag():
 
 
 def ask_question(question: str, k: int = 6) -> str:
-    vectordb = init_rag()
+    vectordb = get_vectordb()
     client = get_groq_client()
 
     docs = vectordb.similarity_search(question, k=k)
